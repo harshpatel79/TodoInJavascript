@@ -1,11 +1,11 @@
 var app = {};
 var Todotask = []
-app.myFunction = function(){
+app.addtask = function(){
 	var task = {};
     task.title = document.getElementById('ToDoTitle').value;
 	task.Description = document.getElementById('Description').value;
-	task.startTime = document.getElementById('datetimepicker1').value;
-	task.endTime = document.getElementById('datetimepicker2').value;
+	task.startTime = document.getElementById('datetimepicker11').value;
+	task.endTime = document.getElementById('datetimepicker22').value;
 	if((task.title == '') || (task.Description == '') || (task.startTime == '') || (task.endTime == '')){
 		alert("Please fill in all fields.");
 	}
