@@ -1,0 +1,13 @@
+body{
+	overflow: hidden;
+}
+.done {
+	color: #777777;
+	text-decoration: line-through;
+}
+.DoneToDo,.PendingToDo,.AddToDo {
+    left: 22px;
+}
+.glyphicon{
+	cursor: pointer;
+}

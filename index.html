@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script type="text/javascript" src="contentstack/contentstack.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.2/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular-sanitize.js"></script>
+<script type="text/javascript" src="app.js"></script>
+<link rel="stylesheet" type="text/css" href="mystyle.css">
+</head>
+<body ng-app="myapp">
+	<div id="mydiv" ng-show="loading">
+	    <img src="gif/loading.gif" class="ajax-loader"/>
+	</div>
+	<div class="ToDos" ng-controller="TodoController" class="container-fluid" ng-hide="loading"> 
+		<div class="row">
+			<div class="DoneToDo col-sm-4">
+				<h1>Done Task</h1>
+				<div class="todos" ng-repeat="todo in Todos" ng-show ="todo.done" >
+					<div id="todo($index)">
+						<span class="glyphicon glyphicon-remove" ng-click="deleteTodo(todo,$index)"></span
+						 <span class="todotitle done">{{todo.title}}</span>
+						 <div class="todotext done">
+						 	<span>Description:</span>
+						 	{{todo.text}}</div>
+						 
+					</div> 
+					<br/>
+				</div>
+			</div>
+			<div class="PendingToDo col-sm-4">
+				<h1>Pending Task</h1>
+				<div class="todos" ng-repeat="todo in Todos" ng-hide= todo.done>
+					<div id="todo($index)">
+						<span class="glyphicon glyphicon-pencil" ng-click="editTodo(todo,$index)"></span>
+						 <span class="glyphicon glyphicon-ok"  ng-click="doneTodo(todo,$index)"></span>
+						 <span class="todotitle">{{todo.title}}</span>
+						 <div class="todotext">
+						 	<span>Description:</span>
+						 	{{todo.text}}
+						 </div>
+					</div> 
+					<br/>
+				</div>
+			</div>
+			<div class="AddToDo col-sm-4">
+				<h1>To Add Task</h1>
+				  <button ng-click="toggleModal()" class="btn btn-default">Add Todo</button>
+				  <modal title="Task" visible="showModal">
+				    <form role="form">
+				      <div class="form-group">
+				        <label for="email">ToDo Title</label>
+				        <input type="hidden" name="someData" ng-model="todo.index" />
+				        <input type="text" class="form-control" id="ToDoTitle" required placeholder="ToDo Title" ng-model="todo.todoTitle"/>
+				      </div>
+				      <div class="form-group">
+				        <label for="password">Description</label>
+				        <textarea class="form-control" rows="5" id="Description" required placeholder="Description" ng-model="todo.todoText"></textarea>
+				      </div>
+				      <button type="submit" class="btn btn-default" ng-disabled="form.$invalid" ng-click="addOrUpdatetodo(todo)" >Submit</button>
+				    </form>
+				  </modal>
+			</div>
+		</div>
+	</div>
+<script type="text/javascript" src="js/directive.js"></script>
+<script type="text/javascript" src="js/services.js"></script>
+<script type="text/javascript" src="js/controller.js"></script>	
+</body>
+</html>
