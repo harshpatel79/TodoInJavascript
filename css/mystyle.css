@@ -1,3 +1,82 @@
 body{
 	overflow-x: hidden;
 }
+.DoneToDo,.PendingToDo,.AddToDo {
+	position: relative;
+	left: 15px;
+}
+.task {
+    position: relative;
+    background-color: #CCAD84;
+    overflow: auto;
+    padding: 12px;
+    margin: 30px 0px;
+}
+.tasktitle{
+	    float: left;
+	     margin-left: 20px;
+}
+.taskdescription{
+	float: left;
+    /* display: inline-block; */
+    margin-left: 20px;
+}
+.taskstartTime{
+	float: left;
+    width: 25%;
+     margin-left: 20px;
+}
+.taskendTime {
+    float: left;
+    width: 25%;
+    margin-left: 20px;
+}
+.completedtask {
+    position: absolute;
+    bottom: 11px;
+    right: 13px;
+    padding: 5px;
+    background: brown;
+    color: aliceblue;
+    cursor: pointer;
+}
+.EditTask {
+    position: absolute;
+    bottom: 48px;
+    right: 13px;
+    padding: 8px;
+    background: tomato;
+    color: white;
+    cursor: pointer;
+}
+.donetask{
+	position: relative;
+    background-color: green;
+    overflow: auto;
+    padding: 12px;
+    margin: 30px 0px;
+}
+.deleteTask {
+    position: absolute;
+    bottom: 11px;
+    right: 13px;
+    padding: 5px;
+    background: #2761D0;
+    color: #F5F7F9;
+    cursor: pointer;
+}
+.onedaytogo{
+	position: relative;
+    background-color: #E45C5C;
+    overflow: auto;
+    padding: 12px;
+    margin: 30px 0px;
+}
+.timegone{
+	position: relative;
+    background-color: #271818;
+    overflow: auto;
+    padding: 12px;
+    margin: 30px 0px;
+    color: white;
+}
