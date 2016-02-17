@@ -46,8 +46,16 @@ app.appenddonetask = function(taskid){
 };
 app.completeFunction =function(e){
 	var taskid = e;
-	Todotask[taskid].status = true;
-	app.appenddonetask(taskid);
+	var x = document.getElementById("taskid"+taskid).value;
+	if(x == "Inprogress"){
+		var d = document.getElementById("task"+taskid);
+        d.className += " Inprogress";
+	}
+	else if(x == "Completed"){
+		Todotask[taskid].status = true;
+		app.appenddonetask(taskid);
+	}
+	
 }
 app.EditFunction =function(e){
 	var taskid = e;
@@ -69,7 +77,7 @@ app.appendtask =function(task){
     	Innercontent += '<div class="taskstartTime"><h4>Task start time</h4><p id="taskstartTime'+task.id+'">'+task.startTime+'</p></div>' ;
     	Innercontent += '<div class="taskendTime"><h4>Task end time</h4><p id="taskendTime'+task.id+'">'+task.endTime+'</p></div>' ;
     	Innercontent += '<div class="EditTask" id="EditTask'+task.id+'" onclick="app.EditFunction('+ task.id+')">Edit</div>' ;
-    	Innercontent += '<div class="completedtask" id="taskid'+task.id+'" onclick="app.completeFunction('+ task.id+')">Completed</div>' ;
+    	Innercontent += '<div class="completedtask"><select id="taskid'+task.id+'" onchange="app.completeFunction('+ task.id+')"><option value="" disabled selected>Select your status</option><option value="Inprogress">Inprogress</option><option value="Completed">Completed</option></select></div>' ;
     newdiv.innerHTML = Innercontent;
     taskelement.appendChild(newdiv);
 };
@@ -80,10 +88,25 @@ app.addtask = function(){
 	task.startTime = document.getElementById('datetimepicker11').value;
 	task.endTime = document.getElementById('datetimepicker22').value;
 	task.hiddenid = document.getElementById('hiddenid').value;
+	console.log("hidden value",task.hiddenid);
 	if((task.title == '') || (task.Description == '') || (task.startTime == '') || (task.endTime == '')){
 		alert("Please fill in all fields.");
+		return false
 	}
 	else{
+		var startTime = Date.parse(task.startTime);
+		var taskendTime = Date.parse(task.endTime);
+	   	var currentTime = Date();
+	   	currentTime =Date.parse(currentTime);
+	   	var difference = taskendTime-startTime;
+	   	if(currentTime > startTime+(60*1000)){
+	   		alert("Start time cannot be past");
+	   		
+	   	}
+	   	if(difference <= 0){
+	   		alert("Start time is greater than end time");
+	   		return false
+	   	}
 		if(task.hiddenid == ''){
 			task.id=Todotask.length;
 			task.status=false;

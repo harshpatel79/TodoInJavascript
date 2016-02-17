@@ -37,7 +37,7 @@ body{
     right: 13px;
     padding: 5px;
     background: brown;
-    color: aliceblue;
+    color: #161617;
     cursor: pointer;
 }
 .EditTask {
@@ -79,4 +79,12 @@ body{
     padding: 12px;
     margin: 30px 0px;
     color: white;
+}
+.Inprogress{
+    position: relative;
+    background-color: #CB84CC;
+    overflow: auto;
+    padding: 12px;
+    margin: 30px 0px;
+    color: white;   
 }
